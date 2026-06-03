@@ -23,9 +23,13 @@ def TestBattle(flame: Any, aqua: Any) -> None:
     print(a1.attack())
 
 
-if __name__ == "__main__":
+def main():
     flame = FlameFactory()
     TestFactory(flame)
     aqua = AquaFactory()
     TestFactory(aqua)
     TestBattle(flame, aqua)
+
+
+if __name__ == "__main__":
+    main()
