@@ -23,7 +23,7 @@ class TransformCapability(ABC):
         return self._transformed
 
     def change_form(self) -> None:
-        if self._transformed == False:
+        if not self._transformed:
             self._transformed = True
         else:
             self._transformed = False

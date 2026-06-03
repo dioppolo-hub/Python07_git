@@ -52,7 +52,7 @@ class Shiftling(Creature, TransformCapability):
 
     def attack(self) -> str:
         form = self.get_form()
-        if form == False:
+        if not form:
             return "Shiftling uses Normal Attack!"
         else:
             return "Shiftling uses Boosted Attck!"
@@ -72,7 +72,7 @@ class Morphagon(Creature, TransformCapability):
 
     def attack(self) -> str:
         form = self.get_form()
-        if form == False:
+        if not form:
             return "Morphagon uses Tail Attack!"
         else:
             return "Morphagon uses Dragon Morph Dive!"
