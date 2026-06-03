@@ -13,3 +13,4 @@ class BattleStrategy(ABC):
 
 class NormalStrategy(BattleStrategy):
     def Norm_strategy(self):
+        print("coming soon")
