@@ -5,7 +5,6 @@ from typing import Any
 def TestFactory(obj: Any) -> None:
     f1 = obj.create_base()
     f2 = obj.create_evolved()
-
     print("\nTesting Factory:")
     print(f1.describe())
     print(f1.attack())

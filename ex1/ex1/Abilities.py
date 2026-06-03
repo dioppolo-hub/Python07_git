@@ -2,8 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class HealCapability(ABC):
-    def heal(target: str) -> str:
-        return f"heals {target} for a small amount"
+    @abstractmethod
+    def heal(self, target: str) -> str:
+        pass
 
 
 class TransformCapability(ABC):
@@ -18,10 +19,10 @@ class TransformCapability(ABC):
     def revert(self) -> str:
         pass
 
-    def get_form(self):
+    def get_form(self) -> bool:
         return self._transformed
 
-    def change_form(self):
+    def change_form(self) -> None:
         if self._transformed == False:
             self._transformed = True
         else:
