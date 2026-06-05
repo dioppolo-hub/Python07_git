@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any
 from ex2.Abilities import TransformCapability, HealCapability
 
 
@@ -9,7 +10,7 @@ class Creature(ABC):
         self.type = type
 
     @abstractmethod
-    def attack(self) -> str:
+    def attack(self, target: Any) -> str:
         pass
 
     def describe(self) -> str:
@@ -20,54 +21,38 @@ class Flameling(Creature):
     def __init__(self):
         super().__init__("Flameling", "Fire")
 
-    def attack(self) -> str:
-        return "Flameling uses Ember!"
-
-
-class Pyrodon(Creature):
-    def __init__(self):
-        super().__init__("Pyrodon", "Fire/Flying")
-
-    def attack(self) -> str:
-        return "Pyrodon uses Flamethrower!"
+    def attack(self, target: Creature) -> str:
+        return f"Flameling uses Ember on {target.name}!"
 
 
 class Aquabub(Creature):
     def __init__(self):
         super().__init__("Aquabub", "Water")
 
-    def attack(self) -> str:
-        return "Aquabub uses Water Gun!"
-
-
-class Torragun(Creature):
-    def __init__(self):
-        super().__init__("Torragun", "Water/Earth")
-
-    def attack(self) -> str:
-        return "Torragun uses Hydro Pump!"
+    def attack(self, target: Creature) -> str:
+        return f"Aquabub uses Water Gun on {target.name}!"
 
 
 class Sproutling(Creature, HealCapability):
     def __init__(self):
         super().__init__("Sproutling", "Grass")
 
-    def attack(self) -> str:
-        return "Sproutling uses Vine Whip!"
+    def attack(self, target: Creature) -> str:
+        return f"Sproutling uses Vine Whip on {target.name}!"
 
-    def heal(self, target: str) -> str:
-        return f"Sproutling heal {target}"
+    def heal(self, target: Creature) -> str:
+        return f"Sproutling heal {target.name}"
 
 
 class Bloomelle(Creature, HealCapability):
     def __init__(self):
         super().__init__("Bloomelle", "Grass/Fairy")
 
-    def attack(self) -> str:
-        return "Bloomelle uses Petal Dance!"
+    def attack(self, target: Creature) -> str:
+        return f"Bloomelle uses Petal Dance on {target.name}!"
 
-    def heal(self, target: str) -> str:
-        return f"Bloomelle heal {target}"
+    def heal(self, target: Creature) -> str:
+        return f"Bloomelle heal {target.name}"
 
 
 class Shiftling(Creature, TransformCapability):
@@ -82,12 +67,12 @@ class Shiftling(Creature, TransformCapability):
         self.change_form()
         return "Shiftling returns to normal"
 
-    def attack(self) -> str:
+    def attack(self, target: Creature) -> str:
         form = self.get_form()
         if not form:
-            return "Shiftling uses Normal Attack!"
+            return f"Shiftling uses Normal Attack on {target.name}!"
         else:
-            return "Shiftling uses Boosted Attck!"
+            return f"Shiftling uses Boosted Attck on {target.name}!"
 
 
 class Morphagon(Creature, TransformCapability):
@@ -102,9 +87,9 @@ class Morphagon(Creature, TransformCapability):
         self.change_form()
         return "Morphagon stabilizes its form"
 
-    def attack(self) -> str:
+    def attack(self, target: Creature) -> str:
         form = self.get_form()
         if not form:
-            return "Morphagon uses Tail Attack!"
+            return f"Morphagon uses Tail Attack on {target.name}!"
         else:
-            return "Morphagon uses Dragon Morph Dive!"
+            return f"Morphagon uses Dragon Morph Dive on {target.name}!"
