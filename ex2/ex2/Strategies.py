@@ -44,4 +44,4 @@ class DefensiveStrategy(BattleStrategy):
                 "Creature cannot use DefensiveStrategy"
             )
         print(creature.attack(target))
-        print(creature.heal(target))
+        print(creature.heal(creature))
