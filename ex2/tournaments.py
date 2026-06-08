@@ -18,14 +18,14 @@ def battle(tournament_id, opponents: list) -> None:
             print(creature1.describe())
             print("vs.")
             print(creature2.describe())
-            print(f"FIGHT!")
+            print("FIGHT!")
             try:
                 strategy1.act(creature1, creature2)
-            except InvalidStrategyError as e:
+            except InvalidStrategyError:
                 print(f"Battle error, Invalid Strategy for {creature1.name}")
             try:
                 strategy2.act(creature2, creature1)
-            except InvalidStrategyError as e:
+            except InvalidStrategyError:
                 print(f"Battle error, Invalid Strategy for {creature2.name}")
 
 
